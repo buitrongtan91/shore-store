@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: sgu.beo.DAO.BrandDAOTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.183 s -- in sgu.beo.DAO.BrandDAOTest

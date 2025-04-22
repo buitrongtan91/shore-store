@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Các cấu hình ở đây -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/shoe_store</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+
+        <mapping class="sgu.beo.model.Product"/>
+        <mapping class="sgu.beo.model.Category"/>
+        <mapping class="sgu.beo.model.Brand"/>
+        <mapping class="sgu.beo.model.ProductVariant"/>
+        <mapping class="sgu.beo.model.ProductVariantHistory"/>
+        <mapping class="sgu.beo.model.User"/>
+        <mapping class="sgu.beo.model.Employee"/>
+        <mapping class="sgu.beo.model.Customer"/>
+        <mapping class="sgu.beo.model.Supplier"/>
+        <mapping class="sgu.beo.model.ImportInvoice"/>
+        <mapping class="sgu.beo.model.ImportInvoiceDetail"/>
+        <mapping class="sgu.beo.model.Promotion"/>
+        <mapping class="sgu.beo.model.SaleInvoice"/>
+        <mapping class="sgu.beo.model.SaleInvoiceDetail"/>
+        <mapping class="sgu.beo.model.Discount"/>
+    </session-factory>
+</hibernate-configuration>

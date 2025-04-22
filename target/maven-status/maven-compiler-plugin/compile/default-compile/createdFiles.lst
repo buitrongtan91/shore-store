@@ -1,0 +1,17 @@
+sgu\beo\model\ProductVariant.class
+sgu\beo\App.class
+sgu\beo\PrimaryController.class
+sgu\beo\util\JdbcUtil.class
+module-info.class
+sgu\beo\DAO\BrandDAO.class
+sgu\beo\DAO\BaseDAO.class
+sgu\beo\DAO\ProductDAO.class
+sgu\beo\model\Brand.class
+sgu\beo\model\Gender.class
+sgu\beo\Main.class
+sgu\beo\util\HibernateUtil.class
+sgu\beo\DAO\CategoryDAO.class
+sgu\beo\SecondaryController.class
+sgu\beo\model\Product.class
+sgu\beo\model\Category.class
+sgu\beo\model\ProductVariantHistory.class
