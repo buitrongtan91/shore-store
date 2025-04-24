@@ -28,7 +28,7 @@ public class SaleInvoice {
     @Column(name = "employee_id", nullable = false)
     private int employee_id;
 
-    @Column(name = "sale_date", nullable = false)
+    @Column(name = "sale_date", nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime sale_date;
 
     @Column(name = "total_amount", nullable = false)

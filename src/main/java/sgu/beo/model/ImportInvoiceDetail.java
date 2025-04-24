@@ -33,6 +33,6 @@ public class ImportInvoiceDetail {
     @Column(name = "total_price", nullable = false)
     private double total_price;
 
-    @Column(name = "id_deleted", nullable = false, columnDefinition = "boolean default false")
+    @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private boolean is_deleted = false;
 }

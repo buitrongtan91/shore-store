@@ -34,10 +34,10 @@ public class Promotion {
     @Column(name = "promotion_value", nullable = false)
     private double promotion_value;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(name = "start_date", nullable = false, columnDefinition = "TEXT")
     private LocalDateTime start_date;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date", nullable = false, columnDefinition = "TEXT")
     private LocalDateTime end_date;
 
     @Column(name = "min_invoice_value", nullable = false)

@@ -28,7 +28,7 @@ public class ImportInvoice {
     @Column(name = "employee_id", nullable = false)
     private int employee_id;
 
-    @Column(name = "import_date", nullable = false)
+    @Column(name = "import_date", nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime import_date;
 
     @Column(name = "total_amount", nullable = false)
