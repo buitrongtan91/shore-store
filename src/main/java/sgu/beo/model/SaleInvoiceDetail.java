@@ -27,18 +27,21 @@ public class SaleInvoiceDetail {
     private int quantity;
 
     @Column(name = "unit_price", nullable = false)
-    private double unit_price;
+    private long unit_price;
 
     @Column(name = "discount_id")
     private int discount_id;
 
     @Column(name = "discount_amount")
-    private double discount_amount;
+    private long discount_amount;
 
     @Column(name = "total_price", nullable = false)
-    private double total_price;
+    private long total_price;
 
     @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private boolean is_deleted = false;
+
+    @Column(name = "size")
+    private String size;
 
 }

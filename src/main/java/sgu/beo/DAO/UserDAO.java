@@ -101,6 +101,22 @@ public class UserDAO extends BaseDAO<User> {
         }
     }
 
+    public User findByUserName(String userName) {
+        String sql = "SELECT * FROM user WHERE username = ?";
+        try (Connection conn = getConnection(); PreparedStatement stm = conn.prepareStatement(sql)) {
+            stm.setString(1, userName);
+            try (ResultSet rs = stm.executeQuery()) {
+                if (rs.next()) {
+                    return mapRow(rs);
+                }
+                return null;
+            }
+        } catch (Exception e) {
+            logger.error(sql, e);
+            return null;
+        }
+    }
+
     private User mapRow(ResultSet rs) throws SQLException {
         User user = new User();
         user.setId(rs.getInt("id"));

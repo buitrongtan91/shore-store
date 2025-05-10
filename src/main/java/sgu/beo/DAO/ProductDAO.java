@@ -11,6 +11,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import sgu.beo.model.Brand;
+import sgu.beo.model.Category;
 import sgu.beo.model.Gender;
 import sgu.beo.model.Product;
 
@@ -26,12 +28,11 @@ public class ProductDAO extends BaseDAO<Product> {
 
     @Override
     public boolean insert(Product product) {
-        String sql = "INSERT INTO product (name, brand_id, category_id, gender) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO product (name, brand_id, category_id) VALUES (?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
             smt.setString(1, product.getName());
-            smt.setInt(2, product.getBrand_id());
-            smt.setInt(3, product.getCategory_id());
-            smt.setString(4, product.getGender().toString());
+            smt.setInt(2, product.getBrand().getId());
+            smt.setInt(3, product.getCategory().getId());
             return smt.executeUpdate() > 0;
         } catch (SQLException e) {
             logger.error(sql, e);
@@ -45,8 +46,8 @@ public class ProductDAO extends BaseDAO<Product> {
         String sql = "UPDATE product SET name = ?, brand_id = ?, category_id = ?, gender = ? WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
             smt.setString(1, product.getName());
-            smt.setInt(2, product.getBrand_id());
-            smt.setInt(3, product.getCategory_id());
+            smt.setInt(2, product.getBrand().getId());
+            smt.setInt(3, product.getCategory().getId());
             smt.setString(4, product.getGender().toString());
             smt.setInt(5, product.getId());
             return smt.executeUpdate() > 0;
@@ -112,8 +113,15 @@ public class ProductDAO extends BaseDAO<Product> {
         Product product = new Product();
         product.setId(rs.getInt("id"));
         product.setName(rs.getString("name"));
-        product.setBrand_id(rs.getInt("brand_id"));
-        product.setCategory_id(rs.getInt("category_id"));
+
+        Brand br = new Brand();
+        br.setId(rs.getInt("brand_id"));
+        product.setBrand(br);
+
+        Category cate = new Category();
+        cate.setId(rs.getInt("category_id"));
+        product.setCategory(cate);
+
         product.setGender(Gender.valueOf(rs.getString("gender")));
         product.set_deleted(rs.getBoolean("is_deleted"));
         return product;

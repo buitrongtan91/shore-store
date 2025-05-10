@@ -18,3 +18,21 @@ public class Main {
         HibernateUtil.shutdown();
     }
 }
+
+// import javafx.application.Application;
+// import javafx.stage.Stage;
+
+// public class Main extends Application {
+// public static void main(String[] args) {
+// System.out.println("JavaFX Runtime Version: " +
+// System.getProperty("javafx.runtime.version"));
+// launch(args);
+// }
+
+// @Override
+// public void start(Stage primaryStage) {
+// System.out.println("JavaFX Runtime Version: " +
+// System.getProperty("javafx.runtime.version"));
+// // Your code here
+// }
+// }

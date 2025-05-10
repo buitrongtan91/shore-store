@@ -28,11 +28,14 @@ public class ImportInvoiceDetail {
     private int quantity;
 
     @Column(name = "unit_price", nullable = false)
-    private double unit_price;
+    private long unit_price;
 
     @Column(name = "total_price", nullable = false)
-    private double total_price;
+    private long total_price;
 
     @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private boolean is_deleted = false;
+
+    @Column(name = "size")
+    private String size;
 }

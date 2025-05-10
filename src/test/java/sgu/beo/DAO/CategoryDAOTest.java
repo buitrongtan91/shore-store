@@ -12,13 +12,7 @@ import org.junit.jupiter.api.Test;
 import sgu.beo.model.Category;
 
 public class CategoryDAOTest {
-    private CategoryDAO categoryDAO;
-
-    @BeforeEach
-    public void setUp() {
-        // Tạo một instance của CategoryDAO
-        categoryDAO = CategoryDAO.getInstance();
-    }
+    private CategoryDAO categoryDAO = CategoryDAO.getInstance();
 
     @Test
     public void testInsert() {

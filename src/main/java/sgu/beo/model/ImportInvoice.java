@@ -32,7 +32,7 @@ public class ImportInvoice {
     private LocalDateTime import_date;
 
     @Column(name = "total_amount", nullable = false)
-    private double total_amount;
+    private long total_amount;
 
     @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private boolean is_deleted = false;

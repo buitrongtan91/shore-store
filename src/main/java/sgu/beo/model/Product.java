@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -34,11 +35,13 @@ public class Product {
     @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private boolean is_deleted = false;
 
-    @Column(name = "brand_id", nullable = false)
-    private int brand_id;
+    @ManyToOne
+    @JoinColumn(name = "brand_id", nullable = false)
+    private Brand brand;
 
-    @Column(name = "category_id", nullable = false)
-    private int category_id;
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")

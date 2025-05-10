@@ -32,16 +32,16 @@ public class SaleInvoice {
     private LocalDateTime sale_date;
 
     @Column(name = "total_amount", nullable = false)
-    private double total_amount;
+    private long total_amount;
 
     @Column(name = "promotion_id")
-    private int promotion_id;
+    private Integer promotion_id;
 
     @Column(name = "promotion_amount")
-    private double promotion_amount;
+    private long promotion_amount;
 
     @Column(name = "final_amount", nullable = false)
-    private double final_amount;
+    private long final_amount;
 
     @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private boolean is_deleted = false;

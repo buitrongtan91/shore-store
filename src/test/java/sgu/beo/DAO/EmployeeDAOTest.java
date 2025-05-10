@@ -11,12 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployeeDAOTest {
 
-    private EmployeeDAO employeeDAO;
-
-    @BeforeEach
-    public void setUp() {
-        employeeDAO = EmployeeDAO.getInstance();
-    }
+    private EmployeeDAO employeeDAO = EmployeeDAO.getInstance();
 
     @Test
     public void testInsert() {

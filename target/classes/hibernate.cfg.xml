@@ -31,5 +31,6 @@
         <mapping class="sgu.beo.model.SaleInvoice"/>
         <mapping class="sgu.beo.model.SaleInvoiceDetail"/>
         <mapping class="sgu.beo.model.Discount"/>
+        <mapping class="sgu.beo.model.Stock"/>
     </session-factory>
 </hibernate-configuration>

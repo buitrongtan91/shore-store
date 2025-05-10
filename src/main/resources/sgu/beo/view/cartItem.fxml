@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="480.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sgu.beo.Controller.CartItemController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox prefHeight="200.0" prefWidth="439.0" spacing="10.0">
+         <children>
+            <Label fx:id="nameLabel" text="Label" />
+            <Label fx:id="brandLabel" text="Label" />
+            <Label fx:id="colorLabel" text="Label" />
+            <HBox>
+               <children>
+                  <Spinner fx:id="quantitySpinner" prefHeight="30.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+            <Label fx:id="priceLabel" text="Label" />
+            <Region prefHeight="200.0" prefWidth="200.0" />
+            <HBox>
+               <children>
+                  <Label fx:id="totalLabel" text="Label" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="deleteBtt" mnemonicParsing="false" text="Button" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

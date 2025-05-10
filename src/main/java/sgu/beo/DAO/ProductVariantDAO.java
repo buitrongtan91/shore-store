@@ -21,16 +21,14 @@ public class ProductVariantDAO extends BaseDAO<ProductVariant> {
 
     @Override
     public boolean insert(ProductVariant variant) {
-        String sql = "INSERT INTO product_variant (product_id, color, size, cost, quantity, img_url, status, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO product_variant (product_id, color, cost, img_url, status, price) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
             smt.setInt(1, variant.getProduct_id());
             smt.setString(2, variant.getColor());
-            smt.setDouble(3, variant.getSize());
-            smt.setDouble(4, variant.getCost());
-            smt.setInt(5, variant.getQuantity());
-            smt.setString(6, variant.getImg_url());
-            smt.setString(7, variant.getStatus());
-            smt.setDouble(8, variant.getPrice());
+            smt.setLong(3, variant.getCost());
+            smt.setString(4, variant.getImg_url());
+            smt.setString(5, variant.getStatus());
+            smt.setLong(6, variant.getPrice());
             return smt.executeUpdate() > 0;
         } catch (SQLException e) {
             logger.error(sql, e);
@@ -38,17 +36,45 @@ public class ProductVariantDAO extends BaseDAO<ProductVariant> {
         }
     }
 
-    @Override
-    public boolean update(ProductVariant variant) {
-        String sql = "UPDATE product_variant SET product_id = ?, color = ?, size = ?, cost = ?, quantity = ?, img_url = ? WHERE id = ?";
-        try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
+    public int insertAndGetId(ProductVariant variant) {
+        String sql = "INSERT INTO product_variant (product_id, color, cost, img_url, status, price) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection conn = getConnection();
+                PreparedStatement smt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
             smt.setInt(1, variant.getProduct_id());
             smt.setString(2, variant.getColor());
-            smt.setDouble(3, variant.getSize());
-            smt.setDouble(4, variant.getCost());
-            smt.setInt(5, variant.getQuantity());
-            smt.setString(6, variant.getImg_url());
-            smt.setInt(7, variant.getId());
+            smt.setLong(3, variant.getCost());
+            smt.setString(4, variant.getImg_url());
+            smt.setString(5, variant.getStatus());
+            smt.setLong(6, variant.getPrice());
+
+            int affectedRows = smt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Chèn variant thất bại, không có dòng nào bị ảnh hưởng.");
+            }
+
+            try (ResultSet generatedKeys = smt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1); // Lấy ID vừa sinh ra
+                } else {
+                    throw new SQLException("Chèn variant thất bại, không lấy được ID.");
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(sql, e);
+            return -1; // hoặc ném ngoại lệ nếu bạn muốn xử lý ở lớp gọi
+        }
+    }
+
+    @Override
+    public boolean update(ProductVariant variant) {
+        String sql = "UPDATE product_variant SET color = ?, cost = ?, img_url = ? WHERE id = ?";
+        try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
+            smt.setString(1, variant.getColor());
+            smt.setLong(2, variant.getCost());
+            smt.setString(3, variant.getImg_url());
+            smt.setInt(4, variant.getId());
             return smt.executeUpdate() > 0;
         } catch (SQLException e) {
             logger.error(sql, e);
@@ -89,6 +115,23 @@ public class ProductVariantDAO extends BaseDAO<ProductVariant> {
         return null;
     }
 
+    public List<ProductVariant> findAllByProductId(int id) {
+        String sql = "SELECT * FROM product_variant WHERE product_id = ?";
+        List<ProductVariant> variants = new ArrayList<>();
+        try (Connection conn = getConnection(); PreparedStatement stm = conn.prepareStatement(sql)) {
+            stm.setInt(1, id);
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    variants.add(mapRow(rs));
+                }
+                return variants;
+            }
+        } catch (SQLException e) {
+            logger.error(sql, e);
+            return null;
+        }
+    }
+
     @Override
     public List<ProductVariant> findByName(String name) {
         throw new UnsupportedOperationException("Unimplemented method 'findByName'");
@@ -99,12 +142,11 @@ public class ProductVariantDAO extends BaseDAO<ProductVariant> {
         variant.setId(rs.getInt("id"));
         variant.setProduct_id(rs.getInt("product_id"));
         variant.setColor(rs.getString("color"));
-        variant.setSize(rs.getDouble("size"));
-        variant.setCost(rs.getDouble("cost"));
-        variant.setQuantity(rs.getInt("quantity"));
+        variant.setCost(rs.getLong("cost"));
         variant.setImg_url(rs.getString("img_url"));
         variant.setStatus(rs.getString("status"));
         variant.set_deleted(rs.getBoolean("is_deleted"));
+        variant.setPrice(rs.getLong("price"));
         return variant;
     }
 }

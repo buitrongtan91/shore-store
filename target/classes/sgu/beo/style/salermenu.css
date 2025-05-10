@@ -1,0 +1,24 @@
+.menu-button {
+    -fx-background-color: #1a162e;
+    -fx-text-fill: #b9babe;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+    -fx-pref-height: 50px;
+    -fx-pref-width: 200px;
+}
+
+.menu-button:hover {
+    -fx-background-color: #1a162e;
+}
+
+.menu-button:focused {
+    -fx-background-color: #1a162e;
+}
+
+.product-card-label {
+    -fx-color: #1a162e;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

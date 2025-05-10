@@ -30,8 +30,8 @@ public class ImportInvoiceDetailDAO extends BaseDAO<ImportInvoiceDetail> {
             stm.setInt(1, entity.getImport_invoice_id());
             stm.setInt(2, entity.getProduct_variant_id());
             stm.setInt(3, entity.getQuantity());
-            stm.setDouble(4, entity.getUnit_price());
-            stm.setDouble(5, entity.getTotal_price());
+            stm.setLong(4, entity.getUnit_price());
+            stm.setLong(5, entity.getTotal_price());
             return stm.executeUpdate() > 0;
 
         } catch (Exception e) {
@@ -47,8 +47,8 @@ public class ImportInvoiceDetailDAO extends BaseDAO<ImportInvoiceDetail> {
         try (Connection conn = getConnection(); PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setInt(1, entity.getProduct_variant_id());
             stm.setInt(2, entity.getQuantity());
-            stm.setDouble(3, entity.getTotal_price());
-            stm.setDouble(4, entity.getUnit_price());
+            stm.setLong(3, entity.getTotal_price());
+            stm.setLong(4, entity.getUnit_price());
             stm.setInt(5, entity.getId());
 
             return stm.executeUpdate() > 0;
@@ -110,9 +110,9 @@ public class ImportInvoiceDetailDAO extends BaseDAO<ImportInvoiceDetail> {
         invoiceDetail.setId(rs.getInt("id"));
         invoiceDetail.setImport_invoice_id(rs.getInt("import_invoice_id"));
         invoiceDetail.setProduct_variant_id(rs.getInt("product_variant_id"));
-        invoiceDetail.setUnit_price(rs.getDouble("unit_price"));
+        invoiceDetail.setUnit_price(rs.getLong("unit_price"));
         invoiceDetail.setQuantity(rs.getInt("quantity"));
-        invoiceDetail.setTotal_price(rs.getDouble("total_price"));
+        invoiceDetail.setTotal_price(rs.getLong("total_price"));
         invoiceDetail.set_deleted(rs.getBoolean("is_deleted"));
         return invoiceDetail;
     }

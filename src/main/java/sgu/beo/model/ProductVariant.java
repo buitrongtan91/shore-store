@@ -28,17 +28,11 @@ public class ProductVariant {
     @Column(name = "color", nullable = false, length = 255)
     private String color;
 
-    @Column(name = "size", nullable = false, length = 255)
-    private double size;
-
     @Column(name = "price", nullable = false)
-    private double price;
+    private long price;
 
     @Column(name = "cost", nullable = false)
-    private double cost;
-
-    @Column(name = "quantity", nullable = false)
-    private int quantity;
+    private long cost;
 
     @Column(name = "img_url", length = 255)
     private String img_url;
@@ -48,6 +42,10 @@ public class ProductVariant {
 
     @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private boolean is_deleted = false;
+
+    @OneToMany
+    @JoinColumn(name = "product_variant_id")
+    private List<Stock> stocks;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_variant_id")

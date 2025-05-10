@@ -34,7 +34,6 @@ public class Brand {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "brand_id")
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private List<Product> products;
 }

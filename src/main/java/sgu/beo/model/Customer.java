@@ -38,4 +38,9 @@ public class Customer {
     @OneToMany
     @JoinColumn(name = "customer_id")
     private List<SaleInvoice> saleInvoice;
+
+    @Override
+    public String toString() {
+        return name + " | " + phone;
+    }
 }

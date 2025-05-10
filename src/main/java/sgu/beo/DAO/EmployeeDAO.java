@@ -109,6 +109,22 @@ public class EmployeeDAO extends BaseDAO<Employee> {
         }
     }
 
+    public Employee findByUserId(int userid) {
+        String sql = "SELECT * FROM employee WHERE user_id = ?";
+        try (Connection conn = getConnection(); PreparedStatement stm = conn.prepareStatement(sql)) {
+            stm.setInt(1, userid);
+            try (ResultSet rs = stm.executeQuery()) {
+                if (rs.next()) {
+                    return mapRow(rs);
+                }
+                return null;
+            }
+        } catch (SQLException e) {
+            logger.error(sql, e);
+            return null;
+        }
+    }
+
     private Employee mapRow(ResultSet rs) throws SQLException {
         Employee employee = new Employee();
         User user = new User();

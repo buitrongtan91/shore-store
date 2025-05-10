@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sgu.beo.Controller.ConfirmInvoiceController">
+        <top>
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="XÁC NHẬN HÓA ĐƠN" BorderPane.alignment="CENTER" />
+        </top>
+    
+        <center>
+            <VBox spacing="15">
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20" />
+                </padding>
+    
+                <!-- Customer Info -->
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="25" />
+                        <ColumnConstraints percentWidth="75" />
+                    </columnConstraints>
+    
+                    <Label text="Tên khách hàng:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Label fx:id="nameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    
+                    <Label text="Số điện thoại:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Label fx:id="phoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    
+                    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Label fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    
+                    <Label text="Địa chỉ:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Label fx:id="addressLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+                </GridPane>
+    
+                <!-- Product Table -->
+                <TableView fx:id="cartTable" prefHeight="300">
+                    <columns>
+                        <TableColumn fx:id="nameColumn" prefWidth="120" text="Tên sản phẩm" />
+                        <TableColumn fx:id="brandColumn" prefWidth="100" text="Thương hiệu" />
+                        <TableColumn fx:id="colorColumn" prefWidth="80" text="Màu sắc" />
+                        <TableColumn fx:id="sizeColumn" prefWidth="60" text="Size" />
+                        <TableColumn fx:id="unitPriceColumn" prefWidth="100" text="Đơn giá" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="80" text="Số lượng" />
+                        <TableColumn fx:id="totalPriceColumn" prefWidth="100" text="Thành tiền" />
+                    </columns>
+                </TableView>
+         <HBox prefHeight="0.0" prefWidth="642.0">
+            <children>
+               <Label text="Tạm tính:" />
+               <Label fx:id="totalLabel" />
+               <Label text="Giảm giá:" />
+               <Label fx:id="promotionLabel" />
+            </children>
+         </HBox>
+         <HBox prefHeight="0.0" prefWidth="642.0">
+            <children>
+               <Label text="Tổng tiền:" />
+               <Label fx:id="finalAmountLabel" />
+            </children>
+         </HBox>
+            </VBox>
+        </center>
+    
+        <bottom>
+            <HBox alignment="CENTER_RIGHT" spacing="15">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <Button fx:id="cancelButton" text="Hủy" />
+                <Button fx:id="confirmButton" defaultButton="true" onAction="#handleConfirm" text="Xác nhận" />
+            </HBox>
+        </bottom>
+    </BorderPane>

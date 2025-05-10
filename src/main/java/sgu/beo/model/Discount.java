@@ -30,7 +30,7 @@ public class Discount {
     private String description;
 
     @Column(name = "discount_value", nullable = false)
-    private double discount_value;
+    private Long discount_value;
 
     @Column(name = "start_date", nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime start_date;

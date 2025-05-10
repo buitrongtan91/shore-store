@@ -32,19 +32,19 @@ public class Promotion {
     private String promotion_type;
 
     @Column(name = "promotion_value", nullable = false)
-    private double promotion_value;
+    private long promotion_value;
 
-    @Column(name = "start_date", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "start_date", nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime start_date;
 
-    @Column(name = "end_date", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "end_date", nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime end_date;
 
     @Column(name = "min_invoice_value", nullable = false)
-    private double min_invoice_value;
+    private long min_invoice_value;
 
     @Column(name = "max_discount_value", nullable = false)
-    private double max_discount_value;
+    private long max_discount_value;
 
     @Column(name = "is_active", nullable = false, columnDefinition = "boolean default true")
     private boolean is_active = true;

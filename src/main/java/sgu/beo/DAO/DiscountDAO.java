@@ -30,7 +30,7 @@ public class DiscountDAO extends BaseDAO<Discount> {
         try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
             smt.setString(1, discount.getName());
             smt.setString(2, discount.getDescription());
-            smt.setDouble(3, discount.getDiscount_value());
+            smt.setLong(3, discount.getDiscount_value());
             smt.setTimestamp(4, Timestamp.valueOf(discount.getStart_date()));
             smt.setTimestamp(5, Timestamp.valueOf(discount.getEnd_date()));
             return smt.executeUpdate() > 0;
@@ -46,7 +46,7 @@ public class DiscountDAO extends BaseDAO<Discount> {
         try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
             smt.setString(1, discount.getName());
             smt.setString(2, discount.getDescription());
-            smt.setDouble(3, discount.getDiscount_value());
+            smt.setLong(3, discount.getDiscount_value());
             smt.setTimestamp(4, Timestamp.valueOf(discount.getStart_date()));
             smt.setTimestamp(5, Timestamp.valueOf(discount.getEnd_date()));
             smt.setInt(6, discount.getId());
@@ -112,7 +112,7 @@ public class DiscountDAO extends BaseDAO<Discount> {
         discount.setId(rs.getInt("id"));
         discount.setName(rs.getString("name"));
         discount.setDescription(rs.getString("description"));
-        discount.setDiscount_value(rs.getDouble("discount_value"));
+        discount.setDiscount_value(rs.getLong("discount_value"));
         discount.setStart_date(rs.getTimestamp("start_date").toLocalDateTime());
         discount.setEnd_date(rs.getTimestamp("end_date").toLocalDateTime());
         discount.set_active(rs.getBoolean("is_active"));

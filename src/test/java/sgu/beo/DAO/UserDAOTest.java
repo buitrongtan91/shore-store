@@ -12,13 +12,7 @@ import org.junit.jupiter.api.Test;
 import sgu.beo.model.User;
 
 public class UserDAOTest {
-    private UserDAO userDAO;
-
-    @BeforeEach
-    public void setUp() {
-        // Tạo một instance của UserDAO
-        userDAO = UserDAO.getInstance();
-    }
+    private UserDAO userDAO = UserDAO.getInstance();
 
     @Test
     public void testInsert() {

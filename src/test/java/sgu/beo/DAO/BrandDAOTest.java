@@ -12,13 +12,7 @@ import org.junit.jupiter.api.Test;
 import sgu.beo.model.Brand;
 
 public class BrandDAOTest {
-    private BrandDAO brandDAO;
-
-    @BeforeEach
-    public void setUp() {
-        // Tạo một instance của BrandDAO
-        brandDAO = BrandDAO.getInstance();
-    }
+    private BrandDAO brandDAO = BrandDAO.getInstance();
 
     @Test
     public void testInsert() {

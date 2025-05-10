@@ -39,4 +39,9 @@ public class Supplier {
     @OneToMany
     @JoinColumn(name = "supplier_id")
     private List<ImportInvoice> importInvoice;
+
+    @Override
+    public String toString() {
+        return "Tên: " + name + ", Sđt: " + phone;
+    }
 }

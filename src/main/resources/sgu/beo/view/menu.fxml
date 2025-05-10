@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootPane" prefHeight="1000.0" stylesheets="@../style/menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sgu.beo.Controller.MenuController">
+    
+        <!-- Sidebar bên trái -->
+        <left>
+            <VBox prefWidth="250" spacing="20" style="-fx-background-color: white; -fx-padding: 20;">
+                <!-- Thông tin nhân viên -->
+                <VBox alignment="CENTER" spacing="10">
+                    <ImageView fx:id="avatarImageView" fitHeight="80" fitWidth="80" style="-fx-background-radius: 50%;" />
+                    <Label fx:id="employeeNameLabel" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #121212;" />
+                    <Label fx:id="employeeEmailLabel" style="-fx-font-size: 12px; -fx-text-fill: #8C8C8C;" />
+                </VBox>
+         <Pane fx:id="menuPane" />
+    
+                <!-- Footer -->
+                <VBox alignment="CENTER" style="-fx-padding: 100 0 0 0;">
+                    <Label style="-fx-font-size: 10px; -fx-text-fill: #B0B0B0;" text="© GroceryMart 2025" />
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+                </VBox>
+            </VBox>
+        </left>
+    
+        <!-- Main Content chính -->
+        <center>
+            <StackPane fx:id="mainContentPane" style="-fx-background-color: #F9F9F9;">
+                <!-- FXML tương ứng sẽ được load vào đây -->
+            </StackPane>
+        </center>
+    
+    </BorderPane>

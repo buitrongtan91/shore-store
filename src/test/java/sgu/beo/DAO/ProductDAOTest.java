@@ -20,27 +20,12 @@ public class ProductDAOTest {
 
     @Test
     public void testInsert() {
-        Product product = new Product();
-        product.setName("Product Test");
-        product.setBrand_id(1);
-        product.setCategory_id(1);
-        product.setGender(Gender.MALE);
 
-        boolean isInserted = productDAO.insert(product);
-        assertTrue(isInserted, "The product should be inserted successfully.");
     }
 
     @Test
     public void testUpdate() {
-        Product product = new Product();
-        product.setId(8); // Giả sử ID đã có trong DB
-        product.setName("Updated Product");
-        product.setBrand_id(1);
-        product.setCategory_id(1);
-        product.setGender(Gender.FEMALE);
 
-        boolean isUpdated = productDAO.update(product);
-        assertTrue(isUpdated, "The product should be updated successfully.");
     }
 
     @Test

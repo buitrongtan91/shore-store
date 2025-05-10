@@ -31,7 +31,7 @@ public class ImportInvoiceDAO extends BaseDAO<ImportInvoice> {
             smt.setInt(1, invoice.getSupplier_id());
             smt.setInt(2, invoice.getEmployee_id());
             smt.setTimestamp(3, Timestamp.valueOf(invoice.getImport_date()));
-            smt.setDouble(4, invoice.getTotal_amount());
+            smt.setLong(4, invoice.getTotal_amount());
             if (smt.executeUpdate() > 0) {
                 try (ResultSet rs = smt.getGeneratedKeys()) {
                     if (rs.next()) {
@@ -51,7 +51,7 @@ public class ImportInvoiceDAO extends BaseDAO<ImportInvoice> {
         String sql = "UPDATE import_invoice SET supplier_id = ?, total_amount = ? WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement smt = conn.prepareStatement(sql)) {
             smt.setInt(1, invoice.getSupplier_id());
-            smt.setDouble(2, invoice.getTotal_amount());
+            smt.setLong(2, invoice.getTotal_amount());
             smt.setInt(3, invoice.getId());
             return smt.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -105,7 +105,7 @@ public class ImportInvoiceDAO extends BaseDAO<ImportInvoice> {
         invoice.setSupplier_id(rs.getInt("supplier_id"));
         invoice.setEmployee_id(rs.getInt("employee_id"));
         invoice.setImport_date(rs.getTimestamp("import_date").toLocalDateTime());
-        invoice.setTotal_amount(rs.getDouble("total_amount"));
+        invoice.setTotal_amount(rs.getLong("total_amount"));
         invoice.set_deleted(rs.getBoolean("is_deleted"));
 
         return invoice;
